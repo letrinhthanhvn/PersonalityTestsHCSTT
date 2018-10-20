@@ -1,39 +1,87 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+
+import {
+} from 'react-native';
+
+import { Router, Scene, } from 'react-native-router-flux';
+import Screen1 from './src/screens/screen1';
+import Screen2 from './src/screens/screen2';
+import Screen3 from './src/screens/screen3';
+import Screen4 from './src/screens/screen4';
+import Screen5 from './src/screens/screen5';
+import Screen6 from './src/screens/screen6';
+
 
 export default class App extends Component {
    render() {
-      return (
-         <View style={styles.container}>
-            <Text style={styles.welcome}>Welcome to React Native!</Text>
-         </View>
-      );
+      return(
+         <Router >
+            <Scene
+               key='root'
+            >
+               <Scene
+                  key="tab1"
+                  hideNavBar
+                  // transitionConfig={transitionConfig}
+                  initial
+               // drawer
+               // drawerIcon={MenuIcon}
+               // contentComponent={Drawer}
+               // drawerWidth={300}
+               >
+                  <Scene
+                     key='screen1'
+                     component={Screen1}
+                     swipeEnabled={false}
+                     panHandlers={null}
+                     initial
+                  />
+                  <Scene
+                     key='screen2'
+                     // title='Categories'
+                     component={Screen2}
+                     swipeEnabled={false}
+                     panHandlers={null}
+                     // initial
+                  />
+                  <Scene
+                     key='screen3'
+                     component={Screen3}
+                     swipeEnabled={false}
+                     panHandlers={null}
+                     hideNavBar
+                  />
+                  <Scene
+                     key='screen4'
+                     component={Screen4}
+                     swipeEnabled={false}
+                     panHandlers={null}
+                  // initial
+                  />
+                  <Scene
+                     key='screen5'
+                     component={Screen5}
+                     swipeEnabled={false}
+                     panHandlers={null}
+                  // initial
+                  />
+                  <Scene
+                     key='screen6'
+                     component={Screen6}
+                     swipeEnabled={false}
+                     panHandlers={null}
+                  //    initial
+                  />
+                  {/* <Scene
+                     key='savedJobs'
+                     component={SavedJobs}
+                     swipeEnabled={false}
+                     panHandlers={null}
+                  //    initßial
+                  /> */}
+               </Scene>
+            </Scene>
+         </Router>
+      )
    }
 }
-
-const styles = StyleSheet.create({
-   container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-   },
-   welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-   },
-   instructions: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
-   },
-});
