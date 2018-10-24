@@ -7,7 +7,6 @@ const initialState = {
 export default function jobSolutions(state = initialState, action) {
    switch (action.type) {
 
-
       default:
       return state
    }
