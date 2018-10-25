@@ -31,11 +31,11 @@ export default class Screen5 extends Component {
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion2 = (value) => {
-      this.props.questions[41].score = value
+      this.props.questions[41].score = 4 - value
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion3 = (value) => {
-      this.props.questions[42].score = value
+      this.props.questions[42].score = 4 - value
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion4 = (value) => {
@@ -51,19 +51,19 @@ export default class Screen5 extends Component {
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion7 = (value) => {
-      this.props.questions[46].score = value
+      this.props.questions[46].score = 4 - value
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion8 = (value) => {
-      this.props.questions[47].score = value
+      this.props.questions[47].score = 4 - value
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion9 = (value) => {
-      this.props.questions[48].score = value
+      this.props.questions[48].score = 4 - value
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion10 = (value) => {
-      this.props.questions[49].score = value
+      this.props.questions[49].score = 4 - value
       console.log('answerQuestion1:::', this.props.questions)
    }
 
@@ -175,7 +175,7 @@ export default class Screen5 extends Component {
 
             <View style={{ height: 60, width: '100%', alignItems: 'center', justifyContent: 'center', paddingBottom: 15 }}>
                <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', }}
-                  onPress={() => Actions.screen6({ questions: this.props.questions })}
+                  onPress={this.switchScreen}
                >
                   <Text>Go next</Text>
                </Button>
@@ -183,6 +183,18 @@ export default class Screen5 extends Component {
 
          </ScrollView>
       )
+   }
+
+   switchScreen = ()=> {
+      const { questions } = this.props
+      Actions.screen6({ 
+         questions: this.props.questions,
+         scoreC: this.props.scoreC + questions[40].score + questions[45].score,
+         scoreA: this.props.scoreA + questions[41].score + questions[46].score,
+         scoreO: this.props.scoreO + questions[42].score + questions[47].score,
+         scoreN: this.props.scoreN + questions[43].score + questions[48].score,
+         scoreE: this.props.scoreE + questions[44].score + questions[49].score 
+      })
    }
 }
 

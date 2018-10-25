@@ -31,11 +31,11 @@ export default class Screen3 extends Component {
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion2 = (value) => {
-      this.props.questions[21].score = value
+      this.props.questions[21].score = 4 - value
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion3 = (value) => {
-      this.props.questions[22].score = value
+      this.props.questions[22].score = 4 - value
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion4 = (value) => {
@@ -51,7 +51,7 @@ export default class Screen3 extends Component {
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion7 = (value) => {
-      this.props.questions[26].score = value
+      this.props.questions[26].score = 4 - value
       console.log('answerQuestion1:::', this.props.questions)
    }
    answerQuestion8 = (value) => {
@@ -70,6 +70,7 @@ export default class Screen3 extends Component {
 
    render() {
       console.log('questions:::::-----', this.props.questions)
+      const { questions } = this.props
       return (
          <ScrollView style={styles.container}>
             <View style={{ height: 200, width: '100%', }}>
@@ -175,7 +176,7 @@ export default class Screen3 extends Component {
 
             <View style={{ height: 60, width: '100%', alignItems: 'center', justifyContent: 'center', paddingBottom: 15 }}>
                <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', }}
-                  onPress={() => Actions.screen4({ questions: this.props.questions })}
+                  onPress={this.switchScreen}
                >
                   <Text>Go next</Text>
                </Button>
@@ -183,6 +184,18 @@ export default class Screen3 extends Component {
 
          </ScrollView>
       )
+   }
+
+   switchScreen = ()=> {
+      const { questions } = this.props
+      Actions.screen4({ 
+         questions: this.props.questions,
+         scoreC: this.props.scoreC + questions[20].score + questions[25].score,
+         scoreA: this.props.scoreA + questions[21].score + questions[26].score,
+         scoreO: this.props.scoreO + questions[22].score + questions[27].score,
+         scoreN: this.props.scoreN + questions[23].score + questions[28].score,
+         scoreE: this.props.scoreE + questions[24].score + questions[29].score 
+      })
    }
 }
 
