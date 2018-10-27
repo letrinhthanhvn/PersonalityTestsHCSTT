@@ -191,7 +191,7 @@ export default class Screen2 extends Component {
 
                     <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center', paddingBottom: 15 }}>
                         <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#327032'}}
-                            onPress={() => Actions.screen2({ questions: questions })}
+                            onPress={() => Actions.screen3({ questions: this.props.questions })}
                         >
                             <Text style={{color: 'white'}}>Go next</Text>
                         </Button>
