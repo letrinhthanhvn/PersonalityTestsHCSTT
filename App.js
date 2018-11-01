@@ -10,7 +10,8 @@ import Screen3 from './src/screens/screen3';
 import Screen4 from './src/screens/screen4';
 import Screen5 from './src/screens/screen5';
 import Screen6 from './src/screens/screen6';
-
+import Gender from './src/screens/gender';
+import Result from './src/screens/result';
 
 export default class App extends Component {
     render() {
@@ -42,7 +43,7 @@ export default class App extends Component {
                             component={Screen2}
                             swipeEnabled={false}
                             panHandlers={null}
-                            //initial
+                        //initial
                         />
                         <Scene
                             key='screen3'
@@ -72,13 +73,21 @@ export default class App extends Component {
                             panHandlers={null}
                         //    initial
                         />
-                        {/* <Scene
-                     key='savedJobs'
-                     component={SavedJobs}
-                     swipeEnabled={false}
-                     panHandlers={null}
-                  //    initßial
-                  /> */}
+                        <Scene
+                            key='gender'
+                            component={Gender}
+                            swipeEnabled={false}
+                            panHandlers={null}
+                        //    initßial
+                        />
+                        <Scene
+                            key='result'
+                            component={Result}
+                            swipeEnabled={false}
+                            panHandlers={null}
+                        //    initßial
+                        />
+
                     </Scene>
                 </Scene>
             </Router>

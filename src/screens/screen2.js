@@ -38,7 +38,7 @@ export default class Screen2 extends Component {
         console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion2 = (value) => {
-        this.props.questions[11].score = value
+        this.props.questions[11].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion3 = (value) => {
@@ -46,7 +46,7 @@ export default class Screen2 extends Component {
         console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion4 = (value) => {
-        this.props.questions[13].score = value
+        this.props.questions[13].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion5 = (value) => {
@@ -58,7 +58,7 @@ export default class Screen2 extends Component {
         console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion7 = (value) => {
-        this.props.questions[16].score = value
+        this.props.questions[16].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion8 = (value) => {
@@ -77,14 +77,22 @@ export default class Screen2 extends Component {
 
     render() {
         console.log('questions:::::-----', this.props.questions)
+        const { questions } = this.props
         return (
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1 }}>
                 <StatusBar barStyle='light-content' />
                 <View style={{ height: getStatusBarHeight(), width, backgroundColor: '#327032' }}></View>
                 <View style={{ height: 50, width, backgroundColor: '#327032', justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ color: 'white', fontSize: 20, fontWeight: '600' }}>Personality Test</Text>
+                    <Text style={{ color: 'white', fontSize: 18}}>Personality Test</Text>
                 </View>
                 <ScrollView style={styles.questionList}>
+                    <View style={{ width, justifyContent: 'center', alignItems: 'center', paddingTop: 12}}>
+                        <Text style={{ color: '#327032', fontWeight: '600' }}>Trang 2/6</Text>
+                    </View>
+                    <View style={{width: width-30, height: 4, backgroundColor: '#D0D0CF', margin: 15, marginBottom: 0}}>
+                        <View style={{width: ((width-30)/6)*2, height: 4, backgroundColor: '#327032'}}></View>
+                    </View>
+
                     <View style={styles.questionContainer}>
                         <Text style={styles.questionText}>
                             <Text style={{ fontWeight: '900' }}>Question 11. </Text>{this.props.questions[10].question}
@@ -187,19 +195,30 @@ export default class Screen2 extends Component {
                         />
                         <View style={styles.line}></View>
                     </View>
-                    
 
                     <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center', paddingBottom: 15 }}>
-                        <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#327032'}}
-                            onPress={() => Actions.screen3({ questions: this.props.questions })}
+                        <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#327032' }}
+                            onPress={this.switchScreen}
                         >
-                            <Text style={{color: 'white'}}>Go next</Text>
+                            <Text style={{ color: 'white' }}>Go next</Text>
                         </Button>
                     </View>
 
                 </ScrollView>
             </View>
         )
+    }
+
+    switchScreen = () => {
+        const { questions } = this.props
+        Actions.screen3({
+            questions: this.props.questions,
+            scoreC: this.props.scoreC + questions[10].score + questions[15].score,
+            scoreA: this.props.scoreA + questions[11].score + questions[16].score,
+            scoreO: this.props.scoreO + questions[12].score + questions[17].score,
+            scoreN: this.props.scoreN + questions[13].score + questions[18].score,
+            scoreE: this.props.scoreE + questions[14].score + questions[19].score
+        })
     }
 }
 
@@ -225,6 +244,7 @@ const styles = StyleSheet.create({
         //backgroundColor: 'yellow'
     },
     line: {
-        borderBottomColor: '#909395', borderBottomWidth: 0.6
+        borderBottomColor: '#909395', borderBottomWidth: 0.6,
+        width: width - 30
     }
 })
