@@ -39,9 +39,9 @@ var questions = [
       { id: 9, question: 'Hiếm khi tôi buồn hay chán nản.', score: 4 },
       { id: 10, question: 'Tôi là người cởi mở và dễ chấp nhận cách sống của người khác.', score: 0 },
       { id: 11, question: 'Khi bắt tay vào một công việc, hầu như tôi luôn luôn hoàn thành nó.', score: 0 },
-      { id: 12, question: 'Đôi khi tôi lừa mọi người làm những gì tôi muốn.', score: 0 },
+      { id: 12, question: 'Đôi khi tôi lừa mọi người làm những gì tôi muốn.', score: 4 },
       { id: 13, question: 'Một số thể loại nhạc có sức cuốn hút rất lớn đối với tôi.', score: 0 },
-      { id: 14, question: 'Hiếm khi tôi lo sợ về tương lai. ', score: 0 },
+      { id: 14, question: 'Hiếm khi tôi lo sợ về tương lai. ', score: 4 },
       { id: 15, question: 'Tôi thực sự thích trò chuyện với mọi người.', score: 0 },
       { id: 16, question: 'Tôi thấy tự hào về khả năng đánh giá đúng đắn của mình.', score: 0 },
       { id: 17, question: 'Nếu cần thiết, tôi sẵn sàng thao túng mọi người để có thứ mình muốn. ', score: 4 },
@@ -155,7 +155,7 @@ export default class Screen1 extends Component {
 
       render() {
             return (
-                  <View style={{ flex: 1 }}>
+                  <View style={{ flex: 1, backgroundColor: 'white' }}>
                         <StatusBar barStyle='light-content' />
                         <View style={{ height: getStatusBarHeight(), width, backgroundColor: '#327032' }}></View>
                         <View style={{ height: 50, width, backgroundColor: '#327032', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'row' }}>
@@ -163,11 +163,11 @@ export default class Screen1 extends Component {
                         </View>
 
                         <ScrollView style={styles.questionList}>
-                              <View style={{ paddingLeft: 15, paddingTop: 15, paddingBottom: 15, paddingRight: 5 }}>
-                                    <Text style={{ fontSize: 15.5 }}>
+                              <View style={{ paddingLeft: 15, paddingTop: 15, paddingBottom: 15, paddingRight: 15 }}>
+                                    <Text style={{ fontSize: 15.5, textAlign: 'justify', lineHeight: 25 }}>
                                           Dưới đây là các câu hỏi và các phương án trả lời bên dưới. Hãy chọn 1 phương án phù hợp với bạn nhất.
                                     </Text>
-                                    <Text style={{ fontSize: 15 }}>
+                                    <Text style={{ fontSize: 15, textAlign: 'justify', lineHeight: 25  }}>
                                           <Text style={{ color: '#891304', fontWeight: '600' }}>Lưu ý: </Text>
                                           <Text style={{}}>Đừng mất quá nhiều thời gian vào một câu hỏi, hãy chọn đáp án xuất hiện đầu tiên trong đầu.</Text>
                                     </Text>

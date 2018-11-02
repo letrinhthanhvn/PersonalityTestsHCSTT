@@ -32,43 +32,43 @@ export default class Screen3 extends Component {
         super(props)
     }
 
-    answerQuestion1 = (value) => {
+    answerQuestion21 = (value) => {
         this.props.questions[20].score = value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion2 = (value) => {
+    answerQuestion22 = (value) => {
         this.props.questions[21].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion3 = (value) => {
+    answerQuestion23 = (value) => {
         this.props.questions[22].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion4 = (value) => {
+    answerQuestion24 = (value) => {
         this.props.questions[23].score = value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion5 = (value) => {
+    answerQuestion25 = (value) => {
         this.props.questions[24].score = value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion6 = (value) => {
+    answerQuestion26 = (value) => {
         this.props.questions[25].score = value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion7 = (value) => {
+    answerQuestion27 = (value) => {
         this.props.questions[26].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion8 = (value) => {
+    answerQuestion28 = (value) => {
         this.props.questions[27].score = value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion9 = (value) => {
+    answerQuestion29 = (value) => {
         this.props.questions[28].score = value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion10 = (value) => {
+    answerQuestion30 = (value) => {
         this.props.questions[29].score = value
         console.log('answerQuestion1:::', this.props.questions)
     }
@@ -78,7 +78,7 @@ export default class Screen3 extends Component {
         console.log('questions:::::-----', this.props.questions)
         const { questions } = this.props
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: 'white' }}>
                 <StatusBar barStyle='light-content' />
                 <View style={{ height: getStatusBarHeight(), width, backgroundColor: '#327032' }}></View>
                 <View style={{ height: 50, width, backgroundColor: '#327032', justifyContent: 'center', alignItems: 'center' }}>
@@ -100,7 +100,7 @@ export default class Screen3 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion21}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -111,7 +111,7 @@ export default class Screen3 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion22}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -122,7 +122,7 @@ export default class Screen3 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion23}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -133,7 +133,7 @@ export default class Screen3 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion24}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -144,7 +144,7 @@ export default class Screen3 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion25}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -155,7 +155,7 @@ export default class Screen3 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion26}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -166,7 +166,7 @@ export default class Screen3 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion27}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -177,7 +177,7 @@ export default class Screen3 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion28}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -188,7 +188,7 @@ export default class Screen3 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion29}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -199,7 +199,7 @@ export default class Screen3 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion30}
                         />
                         <View style={styles.line}></View>
                     </View>

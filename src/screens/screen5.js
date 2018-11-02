@@ -31,43 +31,43 @@ export default class Screen5 extends Component {
         super(props)
     }
 
-    answerQuestion1 = (value) => {
+    answerQuestion41 = (value) => {
         this.props.questions[40].score = value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion2 = (value) => {
+    answerQuestion42 = (value) => {
         this.props.questions[41].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion3 = (value) => {
+    answerQuestion43 = (value) => {
         this.props.questions[42].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion4 = (value) => {
+    answerQuestion44 = (value) => {
         this.props.questions[43].score = value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion5 = (value) => {
+    answerQuestion45 = (value) => {
         this.props.questions[44].score = value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion6 = (value) => {
+    answerQuestion46 = (value) => {
         this.props.questions[45].score = value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion7 = (value) => {
+    answerQuestion47 = (value) => {
         this.props.questions[46].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion8 = (value) => {
+    answerQuestion48 = (value) => {
         this.props.questions[47].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion9 = (value) => {
+    answerQuestion49 = (value) => {
         this.props.questions[48].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
-    answerQuestion10 = (value) => {
+    answerQuestion50 = (value) => {
         this.props.questions[49].score = 4 - value
         console.log('answerQuestion1:::', this.props.questions)
     }
@@ -76,7 +76,7 @@ export default class Screen5 extends Component {
     render() {
         console.log('questions:::::-----', this.props.questions)
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: 'white' }}>
                 <StatusBar barStyle='light-content' />
                 <View style={{ height: getStatusBarHeight(), width, backgroundColor: '#327032' }}></View>
                 <View style={{ height: 50, width, backgroundColor: '#327032', justifyContent: 'center', alignItems: 'center' }}>
@@ -98,7 +98,7 @@ export default class Screen5 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion41}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -109,7 +109,7 @@ export default class Screen5 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion42}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -120,7 +120,7 @@ export default class Screen5 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion43}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -131,7 +131,7 @@ export default class Screen5 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion44}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -142,7 +142,7 @@ export default class Screen5 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion45}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -153,7 +153,7 @@ export default class Screen5 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion46}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -164,7 +164,7 @@ export default class Screen5 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion47}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -175,7 +175,7 @@ export default class Screen5 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion48}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -186,7 +186,7 @@ export default class Screen5 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion49}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -197,7 +197,7 @@ export default class Screen5 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion1}
+                            onPress={this.answerQuestion50}
                         />
                         <View style={styles.line}></View>
                     </View>
