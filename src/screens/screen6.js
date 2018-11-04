@@ -33,43 +33,43 @@ export default class Screen6 extends Component {
 
     answerQuestion51 = (value) => {
         this.props.questions[50].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion52 = (value) => {
         this.props.questions[51].score = 4 - value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion53 = (value) => {
         this.props.questions[52].score = 4 - value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion54 = (value) => {
         this.props.questions[53].score = 4 - value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion55 = (value) => {
         this.props.questions[54].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion56 = (value) => {
         this.props.questions[55].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion57 = (value) => {
         this.props.questions[56].score = 4 - value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion58 = (value) => {
         this.props.questions[57].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion59 = (value) => {
         this.props.questions[58].score = 4 - value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion60 = (value) => {
         this.props.questions[59].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
 
 
@@ -202,7 +202,7 @@ export default class Screen6 extends Component {
                         <View style={styles.line}></View>
                     </View>
 
-                    <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center', paddingBottom: 15 }}>
+                    <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center', }}>
                         <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#327032'}}
                             onPress={this.switchScreen}
                         >
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
         //padding: 10
     },
     questionContainer: {
-        height: 220,
+        height: 230,
         width,
         paddingTop: 15,
         paddingLeft: 15,

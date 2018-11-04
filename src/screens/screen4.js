@@ -33,43 +33,43 @@ export default class Screen4 extends Component {
 
     answerQuestion31 = (value) => {
         this.props.questions[30].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion32 = (value) => {
         this.props.questions[31].score = 4 - value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion33 = (value) => {
         this.props.questions[32].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion34 = (value) => {
         this.props.questions[33].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion35 = (value) => {
         this.props.questions[34].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion36 = (value) => {
         this.props.questions[35].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion37 = (value) => {
         this.props.questions[36].score = 4 - value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion38 = (value) => {
         this.props.questions[37].score = 4 - value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion39 = (value) => {
         this.props.questions[38].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
     answerQuestion40 = (value) => {
         this.props.questions[39].score = value
-        console.log('answerQuestion1:::', this.props.questions)
+        // console.log('answerQuestion1:::', this.props.questions)
     }
 
 
@@ -98,7 +98,7 @@ export default class Screen4 extends Component {
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={this.answerQuestion21}
+                            onPress={this.answerQuestion31}
                         />
                         <View style={styles.line}></View>
                     </View>
@@ -202,7 +202,7 @@ export default class Screen4 extends Component {
                         <View style={styles.line}></View>
                     </View>
 
-                    <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center', paddingBottom: 15 }}>
+                    <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center',}}>
                         <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#327032'}}
                             onPress={this.switchScreen}
                         >
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
         //padding: 10
     },
     questionContainer: {
-        height: 220,
+        height: 230,
         width,
         paddingTop: 15,
         paddingLeft: 15,

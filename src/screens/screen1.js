@@ -113,43 +113,43 @@ export default class Screen1 extends Component {
 
       answerQuestion1 = (value) => {
             questions[0].score = value
-            console.log('answerQuestion1:::', questions)
+            // console.log('answerQuestion1:::', questions)
       }
       answerQuestion2 = (value) => {
             questions[1].score = 4 - value
-            console.log('answerQuestion1:::', questions)
+            // console.log('answerQuestion1:::', questions)
       }
       answerQuestion3 = (value) => {
             questions[2].score = 4 - value
-            console.log('answerQuestion1:::', questions)
+            // console.log('answerQuestion1:::', questions)
       }
       answerQuestion4 = (value) => {
             questions[3].score = 4 - value
-            console.log('answerQuestion1:::', questions)
+            // console.log('answerQuestion1:::', questions)
       }
       answerQuestion5 = (value) => {
             questions[4].score = value
-            console.log('answerQuestion1:::', questions)
+            // console.log('answerQuestion1:::', questions)
       }
       answerQuestion6 = (value) => {
             questions[5].score = value
-            console.log('answerQuestion1:::', questions)
+            // console.log('answerQuestion1:::', questions)
       }
       answerQuestion7 = (value) => {
             questions[6].score = 4 - value
-            console.log('answerQuestion1:::', questions)
+            // console.log('answerQuestion1:::', questions)
       }
       answerQuestion8 = (value) => {
             questions[7].score = 4 - value
-            console.log('answerQuestion1:::', questions)
+            // console.log('answerQuestion1:::', questions)
       }
       answerQuestion9 = (value) => {
             questions[8].score = 4 - value
-            console.log('answerQuestion1:::', questions)
+            // console.log('answerQuestion1:::', questions)
       }
       answerQuestion10 = (value) => {
             questions[9].score = value
-            console.log('answerQuestion1:::', questions)
+            // console.log('answerQuestion1:::', questions)
       }
 
 
@@ -191,7 +191,6 @@ export default class Screen1 extends Component {
                                           radio_props={radio_props}
                                           initial={0}
                                           onPress={this.answerQuestion1}
-
                                     />
                                     <View style={styles.line}></View>
                               </View>
@@ -296,7 +295,7 @@ export default class Screen1 extends Component {
                                     <View style={styles.line}></View>
                               </View>
 
-                              <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center', paddingBottom: 15 }}>
+                              <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center',  }}>
                                     <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#327032' }}
                                           onPress={this.switchScreen}
                                     >
@@ -327,12 +326,12 @@ const styles = StyleSheet.create({
             //padding: 10
       },
       questionContainer: {
-            height: 220,
+            height: 230,
             width,
             paddingTop: 15,
             paddingLeft: 15,
             paddingRight: 5,
-            //backgroundColor: 'blue',
+            // backgroundColor: 'blue',
             justifyContent: 'space-between',
 
       },
