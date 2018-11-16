@@ -9,7 +9,8 @@ import {
 import { Button } from 'react-native-material-kit/lib/mdl';
 import RadioForm from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
-import { getStatusBarHeight } from 'react-native-status-bar-height'
+import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { connect } from 'react-redux';
 
 
 const { width, height } = Dimensions.get('window')
@@ -84,7 +85,7 @@ const gender = [
    { label: 'Nữ', value: 1 }
 ]
 
-export default class Result extends PureComponent {
+class Result extends PureComponent {
 
    constructor(props) {
       super(props)
@@ -368,3 +369,10 @@ const styles = StyleSheet.create({
    }
 })
 
+const mapStateToProps = (state) => {
+   return {
+      gender: state.jobSolutions.result.gender 
+   }
+}
+
+export default connect()(Result)

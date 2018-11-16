@@ -13,7 +13,9 @@ import {
 import RadioForm from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
 import { Button } from 'react-native-material-kit/lib/mdl';
-import { getStatusBarHeight } from 'react-native-status-bar-height'
+import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { connect } from 'react-redux';
+import { sendData } from '../redux/actions/jobSolutions';
 
 const { width } = Dimensions.get('window')
 
@@ -25,7 +27,7 @@ var radio_props = [
     { label: 'Hoàn toàn đúng', value: 4 },
 ];
 
-export default class Screen6 extends Component {
+class Screen6 extends Component {
 
     constructor(props) {
         super(props)
@@ -76,7 +78,7 @@ export default class Screen6 extends Component {
     render() {
         console.log('questions:::::-----', this.props.questions)
         return (
-            <View style={{flex: 1, backgroundColor: 'white' }}>
+            <View style={{ flex: 1, backgroundColor: 'white' }}>
                 <StatusBar barStyle='light-content' />
                 <View style={{ height: getStatusBarHeight(), width, backgroundColor: '#327032' }}></View>
                 <View style={{ height: 50, width, backgroundColor: '#327032', justifyContent: 'center', alignItems: 'center' }}>
@@ -86,8 +88,8 @@ export default class Screen6 extends Component {
                     <View style={{ width, justifyContent: 'center', alignItems: 'center', paddingTop: 12 }}>
                         <Text style={{ color: '#327032', fontWeight: '600' }}>Trang 6/6</Text>
                     </View>
-                    <View style={{width: width-30, height: 4, backgroundColor: '#D0D0CF', margin: 15, marginBottom: 0}}>
-                        <View style={{width: ((width-30)/6)*6, height: 4, backgroundColor: '#327032'}}></View>
+                    <View style={{ width: width - 30, height: 4, backgroundColor: '#D0D0CF', margin: 15, marginBottom: 0 }}>
+                        <View style={{ width: ((width - 30) / 6) * 6, height: 4, backgroundColor: '#327032' }}></View>
                     </View>
 
 
@@ -203,10 +205,10 @@ export default class Screen6 extends Component {
                     </View>
 
                     <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center', }}>
-                        <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#327032'}}
+                        <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#327032' }}
                             onPress={this.switchScreen}
                         >
-                            <Text style={{color: 'white'}}>Go next</Text>
+                            <Text style={{ color: 'white' }}>Go next</Text>
                         </Button>
                     </View>
                 </ScrollView>
@@ -216,14 +218,33 @@ export default class Screen6 extends Component {
 
     switchScreen = () => {
         const { questions } = this.props
-        Actions.gender({
-            questions: this.props.questions,
+        // let scoreA = 0;
+        // let scoreC = 0;
+        // let scoreO = 0;
+        // let scoreN = 0;
+        // let scoreE = 0;
+
+        // Actions.gender({
+        //     questions: this.props.questions,
+        // scoreC: this.props.scoreC + questions[50].score + questions[55].score,
+        // scoreA: this.props.scoreA + questions[51].score + questions[56].score,
+        // scoreO: this.props.scoreO + questions[52].score + questions[57].score,
+        // scoreN: this.props.scoreN + questions[53].score + questions[58].score,
+        // scoreE: this.props.scoreE + questions[54].score + questions[59].score
+        // })
+
+        this.props.sendData({
+            user_name: this.props.username,
             scoreC: this.props.scoreC + questions[50].score + questions[55].score,
             scoreA: this.props.scoreA + questions[51].score + questions[56].score,
             scoreO: this.props.scoreO + questions[52].score + questions[57].score,
             scoreN: this.props.scoreN + questions[53].score + questions[58].score,
-            scoreE: this.props.scoreE + questions[54].score + questions[59].score
+            scoreE: this.props.scoreE + questions[54].score + questions[59].score,
+            check_send: 1
         })
+        if (!this.props.isSendData) {
+            Actions.result({ gender: this.props.gender })
+        }
     }
 }
 
@@ -253,3 +274,17 @@ const styles = StyleSheet.create({
         width: width - 30
     }
 })
+
+const mapDispatchToProps = {
+    sendData
+}
+
+const mapStateToProps = (state) => {
+    return {
+        username: state.jobSolutions.username,
+        isSendData: state.jobSolutions.isSendData,
+        gender: state.jobSolutions.result.gender
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Screen6)

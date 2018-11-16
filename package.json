@@ -13,6 +13,7 @@
     "react-native": "0.57.1",
     "react-native-cached-image": "^1.4.3",
     "react-native-material-kit": "^0.5.1",
+    "react-native-modal": "^7.0.0",
     "react-native-router-flux": "^4.0.5",
     "react-native-safe-area-view": "^0.11.0",
     "react-native-simple-radio-button": "^2.7.3",
