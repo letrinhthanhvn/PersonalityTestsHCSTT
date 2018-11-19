@@ -23,6 +23,7 @@ function* sagaLogin(action) {
       if (res.status == "SUCCESS") {
          console.log('success', res.data[0].user_name)
          yield put(loginSuccess({ user: res.data[0] }))
+         yield Actions.screen1()
          yield AsyncStorage.setItem('username', res.data[0].user_name)
          // yield Actions.listField()
       } else {

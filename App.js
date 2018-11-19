@@ -67,7 +67,7 @@ class App extends Component {
                                 component={Screen1}
                                 swipeEnabled={false}
                                 panHandlers={null}
-                                initial={this.state.hasUserName && this.props.check_send == 0}
+                                initial={this.state.hasUserName}
                             />
                             <Scene
                                 key='screen2'
@@ -116,7 +116,7 @@ class App extends Component {
                                 component={Result}
                                 swipeEnabled={false}
                                 panHandlers={null}
-                                initial={this.props.check_send == 1}
+                                // initial={this.props.check_send == 1}
                             />
                     </Scene>
                 </Router>

@@ -242,9 +242,13 @@ class Screen6 extends Component {
             scoreE: this.props.scoreE + questions[54].score + questions[59].score,
             check_send: 1
         })
-        if (!this.props.isSendData) {
-            Actions.result({ gender: this.props.gender })
-        }
+        // if (!this.props.isSendData) {
+            Actions.result({ gender: this.props.gender , scoreC: this.props.scoreC + questions[50].score + questions[55].score,
+                scoreA: this.props.scoreA + questions[51].score + questions[56].score,
+                scoreO: this.props.scoreO + questions[52].score + questions[57].score,
+                scoreN: this.props.scoreN + questions[53].score + questions[58].score,
+                scoreE: this.props.scoreE + questions[54].score + questions[59].score,})
+        // }
     }
 }
 

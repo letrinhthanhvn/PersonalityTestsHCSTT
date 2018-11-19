@@ -112,46 +112,46 @@ class Login extends PureComponent {
       return (
          <View style={{ flex: 1, backgroundColor: '#327032' }}>
             <ScrollView contentContainerStyle={{ flex: 1 }} scrollEnabled={false}>
-            {
-               this.state.isLoading ? 
-               <View style={{ flex: 1, position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 400, backgroundColor: 'rgba(0, 0, 0, 0.5)',  }}>
-               <ActivityIndicator size="large" color='white' style={{ flex: 1 }} />
-            </View>
-            : null
-            }
-            <View style={{ flex: 1, zIndex: 300, paddingTop: 200 }} >
-               {/* <View style={{ flex: 2, backgroundColor: "red" }}> */}
-               <View style={{ flex: 1, alignItems: 'center' }}>
-                  {
-                     this.renderUserName()
-                  }
-                  {
-                     this.renderPassword()
-                  }
-               </View>
-               <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                  <Button style={[styles.viewTxtInput, { alignItems: 'center', justifyContent: 'center', backgroundColor: '#9AC230', overflow: 'hidden' }]}
-                     onPress={this.signIn}>
-                     <Text style={{ color: "white", fontSize: 18, }}>Sign in</Text>
-                  </Button>
-                  <TouchableOpacity style={{ width: '60%', alignItems: 'center', marginTop: 15, height: 20 }}>
-                     <Text style={{ color: 'white', fontSize: 12 }}>Forgot password</Text>
-                  </TouchableOpacity>
-               </View>
+               {
+                  this.state.isLoading ?
+                     <View style={{ flex: 1, position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 400, backgroundColor: 'rgba(0, 0, 0, 0.5)', }}>
+                        <ActivityIndicator size="large" color='white' style={{ flex: 1 }} />
+                     </View>
+                     : null
+               }
+               <View style={{ flex: 1, zIndex: 300, paddingTop: 200 }} >
+                  {/* <View style={{ flex: 2, backgroundColor: "red" }}> */}
+                  <View style={{ flex: 1, alignItems: 'center' }}>
+                     {
+                        this.renderUserName()
+                     }
+                     {
+                        this.renderPassword()
+                     }
+                  </View>
+                  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                     <Button style={[styles.viewTxtInput, { alignItems: 'center', justifyContent: 'center', backgroundColor: '#9AC230', overflow: 'hidden' }]}
+                        onPress={this.signIn}>
+                        <Text style={{ color: "white", fontSize: 18, }}>Sign in</Text>
+                     </Button>
+                     <TouchableOpacity style={{ width: '60%', alignItems: 'center', marginTop: 15, height: 20 }}>
+                        <Text style={{ color: 'white', fontSize: 12 }}>Forgot password</Text>
+                     </TouchableOpacity>
+                  </View>
 
-               <View style={styles.viewRegister}>
-                  <Text style={styles.textSmall}>Don't have an account?</Text>
-                  <TouchableOpacity style={{ height: '80%', justifyContent: 'center' }}
-                     onPress={this.signUp}
-                  >
-                     <Text style={[styles.textSmall, { fontWeight: '500' }]}> Sign up</Text>
-                  </TouchableOpacity>
+                  <View style={styles.viewRegister}>
+                     <Text style={styles.textSmall}>Don't have an account?</Text>
+                     <TouchableOpacity style={{ height: '80%', justifyContent: 'center' }}
+                        onPress={this.signUp}
+                     >
+                        <Text style={[styles.textSmall, { fontWeight: '500' }]}> Sign up</Text>
+                     </TouchableOpacity>
+                  </View>
                </View>
-            </View>
-         </ScrollView>
+            </ScrollView>
          </View>
          // <KeyboardScroll>
-         
+
          // </KeyboardScroll>
       )
    }
@@ -183,21 +183,20 @@ class Login extends PureComponent {
          alert("Bạn chưa điền mật khẩu!")
       } else {
          this.props.login({ username: this.state.userName, password: this.state.passWord })
-         this.setState({
-            isLoading: true
-         })
-         setTimeout(() => {
-            this.setState({
-               isLoading: false
-            })
-            if (!this.props.isLogin && this.props.isLoginFailed && this.props.check_send == 0) {
-               Actions.screen1()
-            } else if (this.props.check_send == 1) {
-               Actions.result()
-            } else {
-               alert("Tai khoan mat khau cua ban khong dung!")
-            }
-         }, 500)
+         // this.setState({
+         //    isLoading: true
+         // })
+         // Actions.screen1()
+         // setTimeout(() => {
+         // if (!this.props.isLogin && this.props.isLoginFailed) {
+         //    this.setState({
+         //       isLoading: true
+         //    })
+         //    Actions.screen1()
+         // } else {
+         //    alert("Tai khoan mat khau cua ban khong dung!")
+         // }
+         // }, 200)
       }
    }
 }

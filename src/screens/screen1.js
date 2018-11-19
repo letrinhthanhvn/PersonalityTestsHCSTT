@@ -16,6 +16,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height'
 import { Actions } from 'react-native-router-flux';
 import { Button } from 'react-native-material-kit/lib/mdl';
 import RadioForm from 'react-native-simple-radio-button';
+import { connect } from 'react-redux';
 
 const { width, height } = Dimensions.get('window');
 
@@ -89,7 +90,7 @@ var questions = [
       { id: 59, question: 'Rất khó làm tôi tức giận.', score: 4 },
       { id: 60, question: 'Nếu tôi ở một mình quá lâu, tôi cảm thấy thực sự cần ai đó ở bên.', score: 0 }
 ]
-export default class Screen1 extends Component {
+class Screen1 extends Component {
 
       constructor(props) {
             super(props)
@@ -167,7 +168,7 @@ export default class Screen1 extends Component {
                                     <Text style={{ fontSize: 15.5, textAlign: 'justify', lineHeight: 25 }}>
                                           Dưới đây là các câu hỏi và các phương án trả lời bên dưới. Hãy chọn 1 phương án phù hợp với bạn nhất.
                                     </Text>
-                                    <Text style={{ fontSize: 15, textAlign: 'justify', lineHeight: 25  }}>
+                                    <Text style={{ fontSize: 15, textAlign: 'justify', lineHeight: 25 }}>
                                           <Text style={{ color: '#891304', fontWeight: '600' }}>Lưu ý: </Text>
                                           <Text style={{}}>Đừng mất quá nhiều thời gian vào một câu hỏi, hãy chọn đáp án xuất hiện đầu tiên trong đầu.</Text>
                                     </Text>
@@ -180,6 +181,14 @@ export default class Screen1 extends Component {
                               </View>
                               <View style={{ width: width - 30, height: 4, backgroundColor: '#D0D0CF', margin: 15, marginBottom: 0 }}>
                                     <View style={{ width: (width - 30) / 6, height: 4, backgroundColor: '#327032' }}></View>
+                              </View>
+
+                              <View style={{ flex: 1, height: 50, alignItems: 'center', justifyContent: "center", marginTop: 20 }}>
+                                    <TouchableOpacity style={{ width: 100, height: 50, borderRadius: 23, overflow: 'hidden', backgroundColor: '#327032', alignItems: 'center', justifyContent: "center" }}
+                                          onPress={this.getResult}
+                                    >
+                                          <Text style={{ color: 'white' }}>Get result</Text>
+                                    </TouchableOpacity>
                               </View>
 
                               <View style={styles.questionContainer}>
@@ -295,7 +304,7 @@ export default class Screen1 extends Component {
                                     <View style={styles.line}></View>
                               </View>
 
-                              <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center',  }}>
+                              <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center', }}>
                                     <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#327032' }}
                                           onPress={this.switchScreen}
                                     >
@@ -317,6 +326,21 @@ export default class Screen1 extends Component {
                   scoreN: questions[3].score + questions[8].score,
                   scoreE: questions[4].score + questions[9].score
             })
+
+      getResult = () => {
+            if (this.props.result.check_send == 0) {
+                  alert('Ban chua co ket qua truoc day!')
+            } else if (this.props.result.check_send == 1){
+                  Actions.result({
+                        gender: this.props.result.gender, 
+                        scoreC: this.props.result.scoreC,
+                        scoreA: this.props.result.scoreA,
+                        scoreO: this.props.result.scoreO,
+                        scoreN: this.props.result.scoreN,
+                        scoreE: this.props.result.scoreE,
+                  })
+            }
+      }
 }
 
 const styles = StyleSheet.create({
@@ -345,3 +369,11 @@ const styles = StyleSheet.create({
             width: width - 30
       }
 })
+
+const mapStateToProps = (state) => {
+      return {
+            result: state.jobSolutions.result
+      }
+}
+
+export default connect(mapStateToProps)(Screen1)

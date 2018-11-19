@@ -21,7 +21,7 @@ class Result extends PureComponent {
       super(props)
 
       this.state = {
-         loadding: true,
+         loadding: false,
          desA: {
             typeA: null,
             describeA: null,
@@ -51,17 +51,14 @@ class Result extends PureComponent {
    }
 
    componentDidMount() {
-      setTimeout(() => this.setState({
-         loadding: false
-      }), 1200)
-      if (this.props.gender == "Nam") {
-         this.getResultMale()
-      } else {
-         this.getResultFemale()
-      }
+      // setTimeout(() => this.setState({
+      //    loadding: false
+      // }), 1200)
    }
+
    getResultFemale = () => {
       const { questions, scoreA, scoreN, scoreE, scoreC, scoreO } = this.props
+      console.log(";getResultFemale", this.props)
       let desA = {}, desC = {},
          desO = {},
          desN = {},
@@ -180,6 +177,7 @@ class Result extends PureComponent {
    getResultMale = () => {
       // console.log('this.score)', this.)
       const { questions, scoreA, scoreN, scoreE, scoreC, scoreO } = this.props
+      console.log(";getResultFemale", this.props)
       let desA = {}, desC = {},
          desO = {},
          desN = {},
@@ -296,7 +294,7 @@ class Result extends PureComponent {
    }
 
    render() {
-      console.log('propsdesdes::::', this.state)
+      console.log('propsdesdes::::', this.state, this.props)
       const { desA, desN, desO, desE, desC } = this.state
       return (
          <View style={styles.container}>
@@ -370,6 +368,11 @@ class Result extends PureComponent {
                            >
                               <Text style={{ color: 'white' }}>Log Out</Text>
                            </Button>
+                           <Button style={{ width: 100, height: 50, alignItems: 'center', justifyContent: "center", backgroundColor: '#327032', borderRadius: 23 }}
+                              onPress={this.getResult}
+                           >
+                              <Text style={{ color: 'white' }}>Get result</Text>
+                           </Button>
                         </View>
                      </ScrollView>
                   </View>
@@ -388,6 +391,16 @@ class Result extends PureComponent {
          ],
          { cancelable: false }
       )
+   }
+
+   getResult = () => {
+      if (this.props.gender == "Nam") {
+         console.log('genderResultNam:::::', this.props.gender)
+         this.getResultMale()
+      } else {
+         console.log('genderResultNu:::::', this.props.gender)
+         this.getResultFemale()
+      }
    }
 
    logout = async () => {
