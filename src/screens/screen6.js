@@ -7,7 +7,8 @@ import {
     FlatList,
     ScrollView,
     Dimensions,
-    StatusBar
+    StatusBar,
+    Alert
 } from 'react-native';
 
 import RadioForm from 'react-native-simple-radio-button';
@@ -16,6 +17,7 @@ import { Button } from 'react-native-material-kit/lib/mdl';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { connect } from 'react-redux';
 import { sendData } from '../redux/actions/jobSolutions';
+import { update60question } from '../redux/actions/jobSolutions';
 
 const { width } = Dimensions.get('window')
 
@@ -208,12 +210,34 @@ class Screen6 extends Component {
                         <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#327032' }}
                             onPress={this.switchScreen}
                         >
-                            <Text style={{ color: 'white' }}>Go next</Text>
+                            <Text style={{ color: 'white' }}>Next Screen</Text>
                         </Button>
                     </View>
                 </ScrollView>
             </View>
         )
+    }
+
+    sendData = () => {
+        const { questions } = this.props
+        Alert.alert(
+            'Notice!',
+            'Do you want to send data?',
+            [
+               { text: 'NO', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+               { text: 'YES', onPress: () => this.props.sendData({
+                user_name: this.props.username,
+                scoreC: this.props.scoreC + questions[50].score + questions[55].score,
+                scoreA: this.props.scoreA + questions[51].score + questions[56].score,
+                scoreO: this.props.scoreO + questions[52].score + questions[57].score,
+                scoreN: this.props.scoreN + questions[53].score + questions[58].score,
+                scoreE: this.props.scoreE + questions[54].score + questions[59].score,
+                check_send: 0
+            }) },
+            ],
+            { cancelable: false }
+         )
+        
     }
 
     switchScreen = () => {
@@ -232,6 +256,19 @@ class Screen6 extends Component {
         // scoreN: this.props.scoreN + questions[53].score + questions[58].score,
         // scoreE: this.props.scoreE + questions[54].score + questions[59].score
         // })
+        this.props.update60question({
+            user_name: this.props.username,
+            question1: questions[50].score,
+            question2: questions[51].score,
+            question3: questions[52].score,
+            question4: questions[53].score,
+            question5: questions[54].score,
+            question6: questions[55].score,
+            question7: questions[56].score,
+            question8: questions[57].score,
+            question9: questions[58].score,
+            question10: questions[59].score,
+      })
 
         this.props.sendData({
             user_name: this.props.username,
@@ -243,11 +280,14 @@ class Screen6 extends Component {
             check_send: 1
         })
         // if (!this.props.isSendData) {
-            Actions.result({ gender: this.props.gender , scoreC: this.props.scoreC + questions[50].score + questions[55].score,
-                scoreA: this.props.scoreA + questions[51].score + questions[56].score,
-                scoreO: this.props.scoreO + questions[52].score + questions[57].score,
-                scoreN: this.props.scoreN + questions[53].score + questions[58].score,
-                scoreE: this.props.scoreE + questions[54].score + questions[59].score,})
+        Actions.result({
+            gender: this.props.gender, 
+            scoreC: this.props.scoreC + questions[50].score + questions[55].score,
+            scoreA: this.props.scoreA + questions[51].score + questions[56].score,
+            scoreO: this.props.scoreO + questions[52].score + questions[57].score,
+            scoreN: this.props.scoreN + questions[53].score + questions[58].score,
+            scoreE: this.props.scoreE + questions[54].score + questions[59].score,
+        })
         // }
     }
 }
@@ -280,13 +320,13 @@ const styles = StyleSheet.create({
 })
 
 const mapDispatchToProps = {
-    sendData
+    sendData,
+    update60question
 }
 
 const mapStateToProps = (state) => {
     return {
         username: state.jobSolutions.username,
-        isSendData: state.jobSolutions.isSendData,
         gender: state.jobSolutions.result.gender
     }
 }

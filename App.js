@@ -17,6 +17,7 @@ import Gender from './src/screens/gender';
 import Result from './src/screens/result';
 import Login from './src/screens/login';
 import { connect } from 'react-redux';
+import Register from './src/screens/register';
 
 class App extends Component {
 
@@ -32,16 +33,15 @@ class App extends Component {
     componentWillMount() {
         AsyncStorage.getItem('username').then((username) => {
             // console.log('usernameAsync', username)
-            setTimeout(() => {
-                this.setState({ hasUserName: username !== null, isLoaded: true })
+            // setTimeout(() => {
+            this.setState({ hasUserName: username !== null, isLoaded: true })
             // this.props.getCandidateIdLocal()
-            }, 200);
-            
+            // }, 200);
+
         });
     }
 
     render() {
-        console.log('check-send', this.props.check_send)
         if (!this.state.isLoaded) {
             return (
                 <ActivityIndicator />
@@ -49,12 +49,12 @@ class App extends Component {
         } else {
             return (
                 <View style={{ flex: 1, }}>
-                <Router >
-                    <Scene
-                        key='root'
-                        hideNavBar
+                    <Router >
+                        <Scene
+                            key='root'
+                            hideNavBar
                         // initial
-                    >
+                        >
                             <Scene
                                 key='login'
                                 component={Login}
@@ -116,10 +116,15 @@ class App extends Component {
                                 component={Result}
                                 swipeEnabled={false}
                                 panHandlers={null}
-                                // initial={this.props.check_send == 1}
                             />
-                    </Scene>
-                </Router>
+                            <Scene
+                                key='register'
+                                component={Register}
+                                swipeEnabled={false}
+                                panHandlers={null}
+                            />
+                        </Scene>
+                    </Router>
                 </View>
             )
         }
@@ -127,9 +132,8 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log('genderCurrent', state.jobSolutions.result[])
     return {
-        check_send: state.jobSolutions.result.check_send
+        // check_send: state.jobSolutions.result.check_send
     }
 }
 

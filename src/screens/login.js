@@ -21,7 +21,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux'
 import { Button } from 'react-native-material-kit/lib/mdl';
 import Modal from 'react-native-modal';
-// import Register from './register';
+import Register from './register';
 // import { createLoginSelector } from '../container/jobSolutions/selector';
 import { login } from '../redux/actions/jobSolutions';
 // import KeyboardScroll from '../components/KeyboardScroll';
@@ -111,7 +111,7 @@ class Login extends PureComponent {
    render() {
       return (
          <View style={{ flex: 1, backgroundColor: '#327032' }}>
-            <ScrollView contentContainerStyle={{ flex: 1 }} scrollEnabled={false}>
+            <ScrollView scrollEnabled={false}>
                {
                   this.state.isLoading ?
                      <View style={{ flex: 1, position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 400, backgroundColor: 'rgba(0, 0, 0, 0.5)', }}>
@@ -119,9 +119,9 @@ class Login extends PureComponent {
                      </View>
                      : null
                }
-               <View style={{ flex: 1, zIndex: 300, paddingTop: 200 }} >
+               <View style={{ flex: 1, paddingTop: 200 }} >
                   {/* <View style={{ flex: 2, backgroundColor: "red" }}> */}
-                  <View style={{ flex: 1, alignItems: 'center' }}>
+                  <View style={{alignItems: "center", justifyContent: 'center'}}>
                      {
                         this.renderUserName()
                      }
@@ -129,7 +129,7 @@ class Login extends PureComponent {
                         this.renderPassword()
                      }
                   </View>
-                  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                  <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 30 }}>
                      <Button style={[styles.viewTxtInput, { alignItems: 'center', justifyContent: 'center', backgroundColor: '#9AC230', overflow: 'hidden' }]}
                         onPress={this.signIn}>
                         <Text style={{ color: "white", fontSize: 18, }}>Sign in</Text>
@@ -141,7 +141,7 @@ class Login extends PureComponent {
 
                   <View style={styles.viewRegister}>
                      <Text style={styles.textSmall}>Don't have an account?</Text>
-                     <TouchableOpacity style={{ height: '80%', justifyContent: 'center' }}
+                     <TouchableOpacity style={{ height: '100%', justifyContent: 'center' }}
                         onPress={this.signUp}
                      >
                         <Text style={[styles.textSmall, { fontWeight: '500' }]}> Sign up</Text>
@@ -150,16 +150,31 @@ class Login extends PureComponent {
                </View>
             </ScrollView>
          </View>
-         // <KeyboardScroll>
-
-         // </KeyboardScroll>
       )
    }
 
+   // renderModal = () => {
+   //    return (
+   //       <Modal
+   //          isVisible={this.state.isShowModal}
+   //          hideModalContentWhileAnimating
+   //          useNativeDriver
+   //          animationIn='slideInUp'
+   //          animationOut='slideOutDown'
+   //          // onBackdropPress={this.hide}
+   //          animationOutTiming={300}
+   //          backdropOpacity={0.5}
+   //       >
+   //          <View style={{ height: 400, width: '100%', backgroundColor: "red" }}>
+
+   //          </View>
+   //          {/* <Register hideRegister={this.hideModal} /> */}
+   //       </Modal>
+   //    )
+   // }
+
    signUp = () => {
-      this.setState({
-         isShowModal: true
-      })
+      Actions.push('register')
    }
 
    hideModal = () => {
@@ -223,10 +238,11 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: "center",
+      marginTop: 40
    },
    viewDrawer: {
       flex: 1,
-      // backgroundColor: 'green'
+      backgroundColor: 'green'
    }
 })
 

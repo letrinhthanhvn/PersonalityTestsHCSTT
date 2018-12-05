@@ -17,6 +17,7 @@ import { Actions } from 'react-native-router-flux';
 import { Button } from 'react-native-material-kit/lib/mdl';
 import RadioForm from 'react-native-simple-radio-button';
 import { connect } from 'react-redux';
+import { update10question } from '../redux/actions/jobSolutions';
 
 const { width, height } = Dimensions.get('window');
 
@@ -317,7 +318,20 @@ class Screen1 extends Component {
             )
       }
 
-      switchScreen = () =>
+      switchScreen = () => {
+            this.props.update10question({
+                  user_name: this.props.result.user_name,
+                  question1: questions[0].score,
+                  question2: questions[1].score,
+                  question3: questions[2].score,
+                  question4: questions[3].score,
+                  question5: questions[4].score,
+                  question6: questions[5].score,
+                  question7: questions[6].score,
+                  question8: questions[7].score,
+                  question9: questions[8].score,
+                  question10: questions[9].score,
+            })
             Actions.screen2({
                   questions: questions,
                   scoreC: questions[0].score + questions[5].score,
@@ -326,13 +340,13 @@ class Screen1 extends Component {
                   scoreN: questions[3].score + questions[8].score,
                   scoreE: questions[4].score + questions[9].score
             })
-
+      }
       getResult = () => {
             if (this.props.result.check_send == 0) {
                   alert('Ban chua co ket qua truoc day!')
-            } else if (this.props.result.check_send == 1){
+            } else if (this.props.result.check_send == 1) {
                   Actions.result({
-                        gender: this.props.result.gender, 
+                        gender: this.props.result.gender,
                         scoreC: this.props.result.scoreC,
                         scoreA: this.props.result.scoreA,
                         scoreO: this.props.result.scoreO,
@@ -370,10 +384,14 @@ const styles = StyleSheet.create({
       }
 })
 
+const mapDispatchToProps = {
+      update10question
+}
+
 const mapStateToProps = (state) => {
       return {
             result: state.jobSolutions.result
       }
 }
 
-export default connect(mapStateToProps)(Screen1)
+export default connect(mapStateToProps, mapDispatchToProps)(Screen1)

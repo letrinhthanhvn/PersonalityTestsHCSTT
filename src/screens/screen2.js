@@ -13,8 +13,9 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { Button } from 'react-native-material-kit/lib/mdl';
 import RadioForm from 'react-native-simple-radio-button';
-import { getStatusBarHeight } from 'react-native-status-bar-height'
-
+import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { update20question } from '../redux/actions/jobSolutions';
+import { connect } from 'react-redux';
 
 const { width, height } = Dimensions.get('window')
 
@@ -26,7 +27,7 @@ var radio_props = [
     { label: 'Hoàn toàn đúng', value: 4 },
 ];
 
-export default class Screen2 extends Component {
+class Screen2 extends Component {
 
     constructor(props) {
         super(props)
@@ -83,14 +84,14 @@ export default class Screen2 extends Component {
                 <StatusBar barStyle='light-content' />
                 <View style={{ height: getStatusBarHeight(), width, backgroundColor: '#327032' }}></View>
                 <View style={{ height: 50, width, backgroundColor: '#327032', justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ color: 'white', fontSize: 18}}>Personality Test</Text>
+                    <Text style={{ color: 'white', fontSize: 18 }}>Personality Test</Text>
                 </View>
                 <ScrollView style={styles.questionList}>
-                    <View style={{ width, justifyContent: 'center', alignItems: 'center', paddingTop: 12}}>
+                    <View style={{ width, justifyContent: 'center', alignItems: 'center', paddingTop: 12 }}>
                         <Text style={{ color: '#327032', fontWeight: '600' }}>Trang 2/6</Text>
                     </View>
-                    <View style={{width: width-30, height: 4, backgroundColor: '#D0D0CF', margin: 15, marginBottom: 0}}>
-                        <View style={{width: ((width-30)/6)*2, height: 4, backgroundColor: '#327032'}}></View>
+                    <View style={{ width: width - 30, height: 4, backgroundColor: '#D0D0CF', margin: 15, marginBottom: 0 }}>
+                        <View style={{ width: ((width - 30) / 6) * 2, height: 4, backgroundColor: '#327032' }}></View>
                     </View>
 
                     <View style={styles.questionContainer}>
@@ -196,7 +197,7 @@ export default class Screen2 extends Component {
                         <View style={styles.line}></View>
                     </View>
 
-                    <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center',  }}>
+                    <View style={{ height: 100, width: '100%', alignItems: 'center', justifyContent: 'center', }}>
                         <Button style={{ height: 45, width: 100, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#327032' }}
                             onPress={this.switchScreen}
                         >
@@ -211,6 +212,19 @@ export default class Screen2 extends Component {
 
     switchScreen = () => {
         const { questions } = this.props
+        this.props.update20question({
+            user_name: this.props.result.user_name,
+            question1: questions[10].score,
+            question2: questions[11].score,
+            question3: questions[12].score,
+            question4: questions[13].score,
+            question5: questions[14].score,
+            question6: questions[15].score,
+            question7: questions[16].score,
+            question8: questions[17].score,
+            question9: questions[18].score,
+            question10: questions[19].score,
+        })
         Actions.screen3({
             questions: this.props.questions,
             scoreC: this.props.scoreC + questions[10].score + questions[15].score,
@@ -248,3 +262,15 @@ const styles = StyleSheet.create({
         width: width - 30
     }
 })
+
+const mapDispatchToProps = {
+    update20question
+}
+
+const mapStateToProps = (state) => {
+    return {
+        result: state.jobSolutions.result
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Screen2) 

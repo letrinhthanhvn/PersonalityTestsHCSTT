@@ -13,7 +13,9 @@ import {
 import RadioForm from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
 import { Button } from 'react-native-material-kit/lib/mdl';
-import { getStatusBarHeight } from 'react-native-status-bar-height'
+import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { update50question } from '../redux/actions/jobSolutions';
+import { connect } from 'react-redux'; 
 
 const { width } = Dimensions.get('window')
 
@@ -25,7 +27,7 @@ var radio_props = [
     { label: 'Hoàn toàn đúng', value: 4 },
 ];
 
-export default class Screen5 extends Component {
+class Screen5 extends Component {
 
     constructor(props) {
         super(props)
@@ -216,6 +218,19 @@ export default class Screen5 extends Component {
 
     switchScreen = () => {
         const { questions } = this.props
+        this.props.update50question({
+            user_name: this.props.result.user_name,
+            question1: questions[40].score,
+            question2: questions[41].score,
+            question3: questions[42].score,
+            question4: questions[43].score,
+            question5: questions[44].score,
+            question6: questions[45].score,
+            question7: questions[46].score,
+            question8: questions[47].score,
+            question9: questions[48].score,
+            question10: questions[49].score,
+      })
         Actions.screen6({
             questions: this.props.questions,
             scoreC: this.props.scoreC + questions[40].score + questions[45].score,
@@ -253,3 +268,15 @@ const styles = StyleSheet.create({
         width: width - 30
     }
 })
+
+const mapDispatchToProps = {
+    update50question
+}
+
+const mapStateToProps = (state) => {
+    return {
+          result: state.jobSolutions.result
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Screen5) 

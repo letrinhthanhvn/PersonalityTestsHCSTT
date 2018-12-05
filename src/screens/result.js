@@ -359,17 +359,17 @@ class Result extends PureComponent {
                         </View>
                         <View style={{ width: '100%', height: 70, alignItems: 'center', justifyContent: "space-around", flexDirection: 'row' }}>
                            <Button style={{ width: 100, height: 50, alignItems: 'center', justifyContent: "center", backgroundColor: '#327032', borderRadius: 23 }}
-                              onPress={this.tryAgain}
+                              onPress={() => this.tryAgain()}
                            >
                               <Text style={{ color: 'white' }}>Try again</Text>
                            </Button>
                            <Button style={{ width: 100, height: 50, alignItems: 'center', justifyContent: "center", backgroundColor: '#327032', borderRadius: 23 }}
-                              onPress={this.logout}
+                              onPress={() => this.logout()}
                            >
                               <Text style={{ color: 'white' }}>Log Out</Text>
                            </Button>
                            <Button style={{ width: 100, height: 50, alignItems: 'center', justifyContent: "center", backgroundColor: '#327032', borderRadius: 23 }}
-                              onPress={this.getResult}
+                              onPress={() => this.getResult()}
                            >
                               <Text style={{ color: 'white' }}>Get result</Text>
                            </Button>
