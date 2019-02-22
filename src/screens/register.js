@@ -176,7 +176,7 @@ class Register extends PureComponent {
       return (
          // <KeyboardScroll>
          <View style={{ flex: 1 }}>
-            <View style={{ flex: 1, position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 200, backgroundColor: 'rgb(115, 168, 37)' }}>
+            <View style={{ flex: 1, position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 200, backgroundColor: '#327032' }}>
 
             </View>
             <View style={{ flex: 1, zIndex: 300, paddingTop: 20, height: SCREEN_HEIGHT - 20, width: '100%' }}>

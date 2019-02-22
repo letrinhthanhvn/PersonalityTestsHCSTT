@@ -7,7 +7,8 @@ import {
    Dimensions,
    StatusBar,
    Alert,
-   AsyncStorage
+   AsyncStorage,
+   TouchableOpacity
 } from 'react-native';
 
 import { getStatusBarHeight } from 'react-native-status-bar-height';
@@ -47,13 +48,14 @@ class Result extends PureComponent {
             describeC: null,
             jobC: null
          },
+         currentShow: 0
       }
    }
 
    componentDidMount() {
-      // setTimeout(() => this.setState({
-      //    loadding: false
-      // }), 1200)
+      setTimeout(() => {
+         this.getResult()
+      }, 200);
    }
 
    getResultFemale = () => {
@@ -303,8 +305,18 @@ class Result extends PureComponent {
                   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                      <StatusBar barStyle='light-content' />
                      <View style={{ height: getStatusBarHeight(), width, backgroundColor: '#327032' }}></View>
-                     <View style={{ height: 50, width, backgroundColor: '#327032', justifyContent: 'center', alignItems: 'center' }}>
+                     <View style={{ height: 50, width, backgroundColor: '#327032', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
+                        <Button style={{ width: 100, height: 50, alignItems: 'center', justifyContent: "center", backgroundColor: '#327032', borderRadius: 23 }}
+                           onPress={() => this.tryAgain()}
+                        >
+                           <Text style={{ color: 'white' }}>Try again</Text>
+                        </Button>
                         <Text style={{ color: 'white', fontSize: 18 }}>Result</Text>
+                        <Button style={{ width: 100, height: 50, alignItems: 'center', justifyContent: "center", backgroundColor: '#327032', borderRadius: 23, }}
+                           onPress={() => this.logout()}
+                        >
+                           <Text style={{ color: 'white' }}>Log Out</Text>
+                        </Button>
                      </View>
                      <ActivityIndicator size="large" color='#327032' style={{ flex: 1 }} />
                   </View>
@@ -312,68 +324,159 @@ class Result extends PureComponent {
                   <View style={{ flex: 1 }}>
                      <StatusBar barStyle='light-content' />
                      <View style={{ height: getStatusBarHeight(), width, backgroundColor: '#327032' }}></View>
-                     <View style={{ height: 50, width, backgroundColor: '#327032', justifyContent: 'center', alignItems: 'center' }}>
+                     <View style={{ height: 50, width, backgroundColor: '#327032', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
+                        <Button style={{ width: 100, height: 50, alignItems: 'center', justifyContent: "center", backgroundColor: '#327032', borderRadius: 23 }}
+                           onPress={() => this.tryAgain()}
+                        >
+                           <Text style={{ color: 'white' }}>Try again</Text>
+                        </Button>
                         <Text style={{ color: 'white', fontSize: 18 }}>Result</Text>
+                        <Button style={{ width: 100, height: 50, alignItems: 'center', justifyContent: "center", backgroundColor: '#327032', borderRadius: 23, }}
+                           onPress={() => this.logout()}
+                        >
+                           <Text style={{ color: 'white' }}>Log Out</Text>
+                        </Button>
                      </View>
-                     <ScrollView style={{ paddingLeft: 15, paddingRight: 15 }}>
-                        <View style={{ marginTop: 15 }}>
-                           <Text style={styles.headerText}>NHIỄU TÂM</Text>
-                           <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mức độ:</Text>{ desN.typeN }</Text>
-                           <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mô tả:</Text> {desN.describeN}</Text>
+                     <ScrollView style={{ paddingLeft: 15, paddingRight: 15, }}>
+                        <View style={{ marginTop: 15,alignItems: 'center' }}>
+                           <TouchableOpacity style={{ width: 160, height: 40, backgroundColor: '#327032', borderRadius: 23, justifyContent: 'center', alignItems: 'center' }}
+                              onPress={() => this.setState({
+                                 currentShow: 1
+                              })}
+                           >
+                              <Text style={styles.headerText}>NHIỄU TÂM</Text>
+                           </TouchableOpacity>
+                           {
+                              this.state.currentShow == 1 ?
+                                 <View style={{ marginTop: 20 }}>
+                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                                       <Text style={{ fontWeight: '600' }}>Mức độ:</Text>
+                                       <View style={{ width: '80%', backgroundColor: 'rgba(0,0,0,0.3)', height: 5 }} >
+                                          <View style={{ width: desN.typeN == 'Thấp' ? '10%' : desN.typeN == 'Trung Bình' ? '50%' : '95%', backgroundColor: '#327032', height: 5 }}></View>
+                                       </View>
+                                    </View>
+                                    <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mô tả:</Text> {desN.describeN}</Text>
+                                 </View>
+
+                                 :
+                                 null
+                           }
+
                            {
                               // this.props.desN.jobN ? <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Nghề nghiệp:</Text> {desN.jobN}</Text> : null
                            }
                         </View>
 
-                        <View style={{ marginTop: 15 }}>
-                           <Text style={styles.headerText}>HƯỚNG NGOẠI</Text>
-                           <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mức độ:</Text> {desE.typeE}</Text>
-                           <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mô tả:</Text> {desE.describeE}</Text>
+                        <View style={{ marginTop: 15,alignItems: 'center' }}>
+                           <TouchableOpacity style={{ width: 160, height: 40, backgroundColor: '#327032', borderRadius: 23, justifyContent: 'center', alignItems: 'center' }}
+                              onPress={() => this.setState({
+                                 currentShow: 2
+                              })}
+                           >
+                              <Text style={styles.headerText}>HƯỚNG NGOẠI</Text>
+                           </TouchableOpacity>
+
+                           {
+                              this.state.currentShow == 2 ?
+                                 <View style={{ marginTop: 20 }}>
+                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                                       <Text style={{ fontWeight: '600' }}>Mức độ:</Text>
+                                       <View style={{ width: '80%', backgroundColor: 'rgba(0,0,0,0.3)', height: 5 }} >
+                                          <View style={{ width: desE.typeE == 'Thấp' ? '10%' : desN.typeN == 'Trung Bình' ? '50%' : '95%', backgroundColor: '#327032', height: 5 }}></View>
+                                       </View>
+                                    </View>
+                                    <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mô tả:</Text> {desE.describeE}</Text>
+                                 </View>
+                                 :
+                                 null
+                           }
                            {
                               // this.props.desE.jobE ? <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Nghề nghiệp:</Text> {desE.jobE}</Text> : null
                            }
                         </View>
-                        <View style={{ marginTop: 15 }}>
-                           <Text style={styles.headerText}>CỞI MỞ, HAM HỌC HỎI</Text>
-                           <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mức độ:</Text> {desO.typeO}</Text>
-                           <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mô tả:</Text> {desO.describeO}</Text>
+                        <View style={{ marginTop: 15, alignItems: 'center'}}>
+                           <TouchableOpacity style={{ width: 160, height: 40, backgroundColor: '#327032', borderRadius: 23, justifyContent: 'center', alignItems: 'center' }}
+                              onPress={() => this.setState({
+                                 currentShow: 3
+                              })}
+                           >
+                              <Text style={styles.headerText}>CỞI MỞ, HAM HỌC HỎI</Text>
+                           </TouchableOpacity>
+
+                           {
+                              this.state.currentShow == 3 ?
+                                 <View style={{ marginTop: 20 }}>
+                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                                       <Text style={{ fontWeight: '600' }}>Mức độ:</Text>
+                                       <View style={{ width: '80%', backgroundColor: 'rgba(0,0,0,0.3)', height: 5 }} >
+                                          <View style={{ width: desO.typeO == 'Thấp' ? '10%' : desN.typeN == 'Trung Bình' ? '50%' : '95%', backgroundColor: '#327032', height: 5 }}></View>
+                                       </View>
+                                    </View>
+                                    <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mô tả:</Text> {desO.describeO}</Text>
+                                 </View>
+                                 :
+                                 null
+                           }
+
                            {
                               // this.props.desO.jobO ? <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Nghề nghiệp:</Text> {desO.jobO}</Text> : null
                            }
                         </View>
-                        <View style={{ marginTop: 15 }}>
-                           <Text style={styles.headerText}>DỄ CHẤP NHẬN</Text>
-                           <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mức độ:</Text> {desA.typeA}</Text>
-                           <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mô tả:</Text> {desA.describeA}</Text>
+                        <View style={{ marginTop: 15, alignItems: 'center'}}>
+
+                           <TouchableOpacity style={{ width: 160, height: 40, backgroundColor: '#327032', borderRadius: 23, justifyContent: 'center', alignItems: 'center' }}
+                              onPress={() => this.setState({
+                                 currentShow: 4
+                              })}
+                           >
+                              <Text style={styles.headerText}>DỄ CHẤP NHẬN</Text>
+                           </TouchableOpacity>
+                           {
+                              this.state.currentShow == 4 ?
+                                 <View style={{ marginTop: 20 }}>
+                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                                       <Text style={{ fontWeight: '600' }}>Mức độ:</Text>
+                                       <View style={{ width: '80%', backgroundColor: 'rgba(0,0,0,0.3)', height: 5 }} >
+                                          <View style={{ width: desA.typeA == 'Thấp' ? '10%' : desN.typeN == 'Trung Bình' ? '50%' : '95%', backgroundColor: '#327032', height: 5 }}></View>
+                                       </View>
+                                    </View>
+                                    <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mô tả:</Text> {desA.describeA}</Text>
+                                 </View>
+                                 :
+                                 null
+                           }
+
                            {
                               // this.props.desA.jobA ? <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Nghề nghiệp:</Text> {desA.jobA}</Text> : null
                            }
                         </View>
-                        <View style={{ marginTop: 15 }}>
-                           <Text style={styles.headerText}>TẬN TÂM</Text>
-                           <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mức độ:</Text> {desC.typeC}</Text>
-                           <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mô tả:</Text> {desC.describeC}</Text>
+                        <View style={{ marginTop: 15, alignItems: 'center'}}>
+                           <TouchableOpacity style={{ width: 160, height: 40, backgroundColor: '#327032', borderRadius: 23, justifyContent: 'center', alignItems: 'center' }}
+                              onPress={() => this.setState({
+                                 currentShow: 5
+                              })}
+                           >
+                              <Text style={styles.headerText}>TẬN TÂM</Text>
+                           </TouchableOpacity>
+                           {
+                              this.state.currentShow == 5 ?
+                                 <View style={{ marginTop: 20 }}>
+                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                                       <Text style={{ fontWeight: '600' }}>Mức độ:</Text>
+                                       <View style={{ width: '80%', backgroundColor: 'rgba(0,0,0,0.3)', height: 5 }} >
+                                          <View style={{ width: desC.typeC == 'Thấp' ? '10%' : desN.typeN == 'Trung Bình' ? '50%' : '95%', backgroundColor: '#327032', height: 5 }}></View>
+                                       </View>
+                                    </View>
+                                    <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Mô tả:</Text> {desC.describeC}</Text>
+                                 </View>
+                                 :
+                                 null
+                           }
                            {
                               // this.props.desC.jobC ? <Text style={styles.textBlock}><Text style={{ fontWeight: '600' }}>Nghề nghiệp:</Text> {desC.jobC}</Text> : null
                            }
                         </View>
-                        <View style={{ width: '100%', height: 70, alignItems: 'center', justifyContent: "space-around", flexDirection: 'row' }}>
-                           <Button style={{ width: 100, height: 50, alignItems: 'center', justifyContent: "center", backgroundColor: '#327032', borderRadius: 23 }}
-                              onPress={() => this.tryAgain()}
-                           >
-                              <Text style={{ color: 'white' }}>Try again</Text>
-                           </Button>
-                           <Button style={{ width: 100, height: 50, alignItems: 'center', justifyContent: "center", backgroundColor: '#327032', borderRadius: 23 }}
-                              onPress={() => this.logout()}
-                           >
-                              <Text style={{ color: 'white' }}>Log Out</Text>
-                           </Button>
-                           <Button style={{ width: 100, height: 50, alignItems: 'center', justifyContent: "center", backgroundColor: '#327032', borderRadius: 23 }}
-                              onPress={() => this.getResult()}
-                           >
-                              <Text style={{ color: 'white' }}>Get result</Text>
-                           </Button>
-                        </View>
+                        
                      </ScrollView>
                   </View>
             }
@@ -490,7 +593,17 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
    },
    textBlock: { textAlign: 'justify', lineHeight: 25 },
-   headerText: { color: '#327032', fontWeight: '600', lineHeight: 36 }
+   headerText: { color: 'white', fontWeight: '600', lineHeight: 36 },
+   viewContainer: {
+
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      elevation: 1,
+      marginLeft: 5,
+      marginRight: 5,
+      marginTop: 5,
+   }
 });
 
 export default Result;
